@@ -15,10 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -37,6 +34,28 @@ public class UserController {
      * @throws SignUpRestrictedException
      */
 
+    @RequestMapping(method = RequestMethod.POST, path = "/user/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<SignupUserResponse> signup(@RequestBody SignupUserRequest signupUserRequest) throws  SignUpRestrictedException{
+        final UserEntity userEntity=new UserEntity();
+        userEntity.setId(1);
+        userEntity.setUuid(UUID.randomUUID().toString());
+        userEntity.setFirstName(signupUserRequest.getFirstName());
+        userEntity.setLastName(signupUserRequest.getLastName());
+        userEntity.setUserName("username");
+        userEntity.setEmail(signupUserRequest.getEmailAddress());
+        userEntity.setPassword(signupUserRequest.getPassword());
+        userEntity.setSalt("123abc");
+        userEntity.setCountry(signupUserRequest.getCountry());
+        userEntity.setAboutMe(signupUserRequest.getAboutMe());
+        userEntity.setDob(signupUserRequest.getDob());
+        userEntity.setRole("user");
+        userEntity.setContactNumber(signupUserRequest.getContactNumber());
+
+        final UserEntity createUserEntity =userBusinessService.signup(userEntity);
+        SignupUserResponse userResponse=new SignupUserResponse().id(createUserEntity.getUuid()).status("USER SUCCESSFULLY REGISTERED");
+
+        return new ResponseEntity<SignupUserResponse>(userResponse, HttpStatus.CREATED);
+    }
     /**
      * A controller method for user authentication.
      *
@@ -44,6 +63,21 @@ public class UserController {
      * @return - ResponseEntity<SigninResponse> type object along with Http status OK.
      * @throws AuthenticationFailedException
      */
+
+    @RequestMapping(method = RequestMethod.POST,path = "/login",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<SigninResponse> authentication(@RequestHeader("authorization") final String authorization)throws AuthenticationFailedException{
+        byte[] decode = Base64.getDecoder().decode(authorization.split("Basic")[1]);
+        String decodedText = new String(decode);
+        String[] decodedArray = decodedText.split(":");
+
+        UserAuthEntity userAuthToken = userBusinessService.authenticate(decodedArray[0], decodedArray[1]);
+        UserEntity user = userAuthToken.getUser();
+
+        SigninResponse signinResponse=new SigninResponse().id((user.getUuid())).message("SIGNED IN SUCCESSFULLY");
+        HttpHeaders httpHeaders=new HttpHeaders();
+        httpHeaders.add("access-token", userAuthToken.getAccessToken());
+        return new ResponseEntity<SigninResponse>(signinResponse,httpHeaders, HttpStatus.OK);
+    }
 
     /**
      * A controller method for user signout.
@@ -53,4 +87,10 @@ public class UserController {
      * @throws SignOutRestrictedException
      */
 
+    @RequestMapping(method = RequestMethod.POST,path = "/user/signout",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<SignoutResponse> signout(@RequestHeader("authorization") final String authorization)throws SignOutRestrictedException{
+        UserAuthEntity userAuthEntity=userBusinessService.signout(authorization);
+        SignoutResponse signoutResponse=new SignoutResponse().id(userAuthEntity.getUuid()).message("SIGNED OUT SUCCESSFULLY");
+        return new ResponseEntity<SignoutResponse>(signoutResponse,HttpStatus.OK);
+    }
 }

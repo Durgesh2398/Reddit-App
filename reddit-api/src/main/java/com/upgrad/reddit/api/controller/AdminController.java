@@ -17,6 +17,7 @@ public class AdminController {
     @Autowired
     private AdminBusinessService adminBusinessService;
 
+
     /**
      * A controller method to delete a user in the database.
      *

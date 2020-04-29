@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/")
-public class CommonController {
+public class    CommonController {
 
     @Autowired
     private CommonBusinessService commonBusinessService;
@@ -26,4 +26,22 @@ public class CommonController {
      * @throws UserNotFoundException
      * @throws AuthorizationFailedException
      */
+
+    @RequestMapping(method = RequestMethod.GET,path = "/userprofile/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<UserDetailsResponse> getUserProfile(@PathVariable("userId") String userId,@RequestHeader(value = "Authorization")final String authorization)throws AuthorizationFailedException,UserNotFoundException{
+        UserEntity user = commonBusinessService.getUser(userId, authorization);
+
+        UserDetailsResponse userDetailsResponse=new UserDetailsResponse();
+        userDetailsResponse.firstName(user.getUserName());
+        userDetailsResponse.lastName(user.getLastName());
+        userDetailsResponse.userName(user.getLastName());
+        userDetailsResponse .emailAddress(user.getEmail());
+        userDetailsResponse .dob(user.getDob());
+        userDetailsResponse.country(user.getCountry());
+        userDetailsResponse .aboutMe(user.getAboutMe());
+        userDetailsResponse  .contactNumber(user.getContactNumber());
+
+        return  new ResponseEntity<UserDetailsResponse>( userDetailsResponse, HttpStatus.OK);
+    }
+
 }
