@@ -32,45 +32,20 @@ public class UserBusinessService {
         String[] encryptedText = passwordCryptographyProvider.encrypt(userEntity.getPassword());
         userEntity.setSalt(encryptedText[0]);
         userEntity.setPassword(encryptedText[1]);
-        if(userEntity!=null){
-            throw new SignUpRestrictedException("SGR-001","Try any other UserName, this username has already taken");
-        }
-        UserEntity userEntity1=userDao.getUserByEmail(userEntity.getEmail());
-        if(userEntity1!=null){
-            throw new SignUpRestrictedException("SGR-002","This user has already been registered, try with any other emailId");
-        }
-        return userDao.createUser(userEntity);
-
+        userDao.createUser(userEntity);
+        return  userEntity;
     }
+
 
     /**
      * The method implements the business logic for signin endpoint.
      */
     @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthEntity authenticate(String username, String password) throws AuthenticationFailedException {
-
-        UserEntity userEntity = userDao.getUserByUsername(username);
-        if(userEntity==null){
-            throw new AuthenticationFailedException("ATH-001","This username does not exist");
-        }
-        if(password.equals(userEntity.getPassword())){
-            JwtTokenProvider jwtTokenProvider=new JwtTokenProvider(password);
-            UserAuthEntity userAuthEntity= new UserAuthEntity();
-            userAuthEntity.setUser(userEntity);
-            final ZonedDateTime now=ZonedDateTime.now();
-            final ZonedDateTime expiresAT=now.plusHours(10);
-            userAuthEntity.setAccessToken(jwtTokenProvider.generateToken(userEntity.getUuid(),now,expiresAT));
-            userAuthEntity.setLoginAt(now);
-            userAuthEntity.setExpiresAt(expiresAT);
-            userAuthEntity.setUuid(UUID.randomUUID().toString());
-            userDao.createUserAuth(userAuthEntity);
-            userDao.updateUserAuth(userAuthEntity);
-            return userAuthEntity;
-        }
-        else {
-            throw new AuthenticationFailedException("ATH-002","Password failed");
-        }
+        UserAuthEntity userAuthEntity = authenticate(username,password);
+        return  userAuthEntity;
     }
+
 
     /**
      * The method implements the business logic for signout endpoint.
@@ -79,11 +54,6 @@ public class UserBusinessService {
     public UserAuthEntity signout(String authorization) throws SignOutRestrictedException {
 
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
-        if(userAuthEntity!=null){
-            return userDao.signOut(userAuthEntity);
-        }
-        else {
-            throw new SignOutRestrictedException("SGR-001","User is not signed in");
-        }
+        return userAuthEntity;
     }
 }
