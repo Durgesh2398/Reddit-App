@@ -14,9 +14,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * This class contains all the test cases to test the AdminController class.
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RedditApiApplication.class)
 @AutoConfigureMockMvc

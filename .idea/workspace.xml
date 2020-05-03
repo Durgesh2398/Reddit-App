@@ -41,14 +41,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c1033fd-a60d-4d6e-a40e-98c8f172c921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-db/src/main/resources/config/localhost.properties" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-db/src/main/resources/config/localhost.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/common/ErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/common/GenericErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/common/JwtTokenProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/common/UnexpectedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-api/src/test/java/controller/AdminControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/test/java/controller/AdminControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +79,11 @@
       <recent name="com.upgrad.reddit.api.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Prince Singla\Desktop\reddit-app\Reddit-App\reddit-service\src\main\java\com\upgrad\reddit\service\business\common" />
       <recent name="$PROJECT_DIR$/reddit-api/src/test/java" />
       <recent name="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller" />
       <recent name="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business" />
       <recent name="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/common" />
-      <recent name="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/dao" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.controller in redditapi">
