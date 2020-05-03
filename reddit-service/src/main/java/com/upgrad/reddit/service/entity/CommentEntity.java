@@ -16,6 +16,7 @@ import java.time.ZonedDateTime;
         @NamedQuery(name = "commentByUuid", query = "select a from CommentEntity a where a.uuid= :uuid"),
         @NamedQuery(name = "getAllCommentsByPost", query = "select a from CommentEntity a where a.post = :post")
 })
+
 @Entity
 @Table(name = "COMMENT")
 public class CommentEntity {
