@@ -1,4 +1,4 @@
-package com.upgrad.reddit.service.common;
+package com.upgrad.reddit.service.business.common;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

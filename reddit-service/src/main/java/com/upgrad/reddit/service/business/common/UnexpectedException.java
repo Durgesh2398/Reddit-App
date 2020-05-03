@@ -1,4 +1,4 @@
-package com.upgrad.reddit.service.common;
+package com.upgrad.reddit.service.business.common;
 
 
 import java.io.PrintStream;
