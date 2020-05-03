@@ -33,8 +33,8 @@ public class PostBusinessService {
     public PostEntity createPost(PostEntity postEntity, String authorization) throws AuthorizationFailedException {
 
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
-        postEntity.setUser(userAuthEntity.getUser());
-        return postDao.createPost(postEntity);
+        postDao.createPost(postEntity);
+        return  postEntity;
     }
 
     /**
@@ -44,7 +44,9 @@ public class PostBusinessService {
 
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
         return postDao.getPosts();
+
     }
+
 
     /**
      * The method implements the business logic for editPostContent endpoint.
@@ -52,16 +54,22 @@ public class PostBusinessService {
     @Transactional(propagation = Propagation.REQUIRED)
     public PostEntity editPostContent(PostEntity postEntity, String postId, String authorization) throws AuthorizationFailedException, InvalidPostException {
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
-
+        postDao.editPost(postEntity);
+        return postEntity;
     }
 
     /**
      * The method implements the business logic for deletePost endpoint.
      */
+
     @Transactional(propagation = Propagation.REQUIRED)
+
     public PostEntity deletePost(String postId, String authorization) throws AuthorizationFailedException, InvalidPostException {
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
+        PostEntity postEntity=postDao.getPostByUuid(postId);
+        postDao.deletePost(postEntity);
 
+        return postEntity;
     }
 
     /**
@@ -69,6 +77,7 @@ public class PostBusinessService {
      */
     public TypedQuery<PostEntity> getPostsByUser(String userId, String authorization) throws AuthorizationFailedException, UserNotFoundException {
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
+        PostEntity  postEntity=postDao.getPostByUuid(userId);
+        return postDao.getPostsByUser(userAuthEntity.getUser());
     }
-
 }
