@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c1033fd-a60d-4d6e-a40e-98c8f172c921" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-api/src/main/java/com/upgrad/reddit/api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/AdminBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/AdminBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/CommonBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/CommonBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/PostBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/PostBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/UserBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/business/UserBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/reddit-service/src/main/java/com/upgrad/reddit/service/dao/UserDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Backend/redditApp-master" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/projectr/RedditApp-master/reddit" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -133,17 +140,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="23" key="#Project_Structure" timestamp="1588139710296">
+    <state x="275" y="23" key="#Project_Structure" timestamp="1588497082367">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="23" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1588139710296" />
+    <state x="275" y="23" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1588497082367" />
     <state x="534" y="257" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588139736708">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="534" y="257" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1588139736708" />
-    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1588140032408">
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1588498991291">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588140032408" />
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588498991291" />
+    <state x="378" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1588495593270">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="378" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588495593270" />
+    <state x="65" y="67" key="new project wizard" timestamp="1588403935802">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="67" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1588403935802" />
+    <state x="389" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1588426540913">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="389" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1588426540913" />
   </component>
 </project>

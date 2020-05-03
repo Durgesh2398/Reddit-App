@@ -33,6 +33,8 @@ public class PostBusinessService {
     public PostEntity createPost(PostEntity postEntity, String authorization) throws AuthorizationFailedException {
 
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
+        postEntity.setUser(userAuthEntity.getUser());
+        return postDao.createPost(postEntity);
     }
 
     /**
@@ -41,6 +43,7 @@ public class PostBusinessService {
     public TypedQuery<PostEntity> getPosts(String authorization) throws AuthorizationFailedException {
 
         UserAuthEntity userAuthEntity = userDao.getUserAuthByAccesstoken(authorization);
+        return postDao.getPosts();
     }
 
     /**

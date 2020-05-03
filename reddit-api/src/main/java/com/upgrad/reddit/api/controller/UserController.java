@@ -44,7 +44,7 @@ public class UserController {
         userEntity.setUserName("username");
         userEntity.setEmail(signupUserRequest.getEmailAddress());
         userEntity.setPassword(signupUserRequest.getPassword());
-        userEntity.setSalt("123abc");
+        userEntity.setSalt("123@abc");
         userEntity.setCountry(signupUserRequest.getCountry());
         userEntity.setAboutMe(signupUserRequest.getAboutMe());
         userEntity.setDob(signupUserRequest.getDob());
